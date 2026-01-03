@@ -351,7 +351,9 @@ const Layout = ({tamu, background, bingkai, dataCouple, fotoDefault, warnaPrimar
               <div className="relative w-[300px] h-[300px] mx-auto rounded-xl overflow-hidden border-b">
                 <img src={bingkai} className="absolute top-0 left-0 w-full h-full object-cover" />
                 <div className={`w-full h-full relative z-10 mb-10 rubik-font`}>
-                  <h6 className="mt-12 mb-5 text-xl">Resepsi</h6>
+                  <h6 className="mt-12 mb-5 text-xl">
+                   {dataCouple?.tipe_acara === "Resepsi" ? "Resepsi" : "Tasyakuran"}
+                  </h6>
                   <div>
                     {dataCouple?.tanggal_resepsi && 
                       <h6 className='text-lg'>{formatDate(dataCouple?.tanggal_resepsi)}</h6>

@@ -111,6 +111,7 @@ const Admin = () => {
     template: "",
     slug: "",
     tipe: "",
+    tipe_acara: "",
     // pria
     nama_lengkap_pria: "",
     nama_panggilan_pria: "",
@@ -257,6 +258,7 @@ const Admin = () => {
               >
                 <Input label="Template" name="template" type="text" onChange={handleChange} placeholder="cth: template1" />
                 <Input label="Tipe Undangan" name="tipe" type="text" onChange={handleChange} placeholder="cth: Pernikahan" />
+                <Input label="Tipe Acara" name="tipe_acara" type="text" onChange={handleChange} placeholder="cth: Resepsi" />
                 <Input label="Slug (URL)" name="slug" type="text" onChange={handleChange} placeholder="cth: romeo-juliet" />
               </FormSection>
 
@@ -294,7 +296,7 @@ const Admin = () => {
               </FormSection>
 
               <FormSection
-                title="Acara Resepsi" icon={<FaCalendarAlt size={18} />}
+                title="Acara Resepsi/Tasyakuran" icon={<FaCalendarAlt size={18} />}
                 isOpen={openSections.resepsi} onToggle={() => toggleSection('resepsi')}
               >
                 <Input label="Tanggal" name="tanggal_resepsi" type="date" onChange={handleChange} />
