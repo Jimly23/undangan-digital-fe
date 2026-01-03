@@ -22,7 +22,7 @@ jobs:
         port: 22
         script: |
           # Arahkan ke folder project di VPS
-          cd /var/www/stg.youvitation.com/frontend
+          cd /var/www/youvitation.com/frontend
           
           # Tarik perubahan terbaru
           echo "Melakukan Git Pull..."

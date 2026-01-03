@@ -1,0 +1,32 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - stagging  # Trigger hanya jika push ke branch staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy Staging to VPS
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: 22
+        script: |
+          cd /var/www/stg.youvitation.com/frontend
+          git fetch origin
+          git checkout staging
+          git pull origin staging
+          npm install
+          
+          # Membuat file .env untuk staging (PENTING)
+          echo "${{ secrets.ENV_STAGING }}" > .env
+          
+          npm run build
