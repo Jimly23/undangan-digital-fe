@@ -66,6 +66,8 @@ const Admin = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [dataCouple, setDataCouple] = useState([]);
+  const [loadingMessage, setLoadingMessage] = useState("Menyimpan...");
+  const [successMessage, setSuccessMessage] = useState("Berhasil Disimpan!");
 
   // State to manage open sections
   const [openSections, setOpenSections] = useState({
@@ -180,9 +182,11 @@ const Admin = () => {
     });
 
     try {
+      setLoadingMessage("Menyimpan...");
       setLoading(true)
       const response = await uploadCouple(data);
       setLoading(false)
+      setSuccessMessage("Berhasil Disimpan!");
       setSuccess(true)
       setTimeout(() => {
         setSuccess(false)
@@ -198,13 +202,24 @@ const Admin = () => {
   const handleDelete = async (slug) => {
     if (!window.confirm("Apakah anda yakin ingin menghapus undangan ini?")) return;
     try {
+      setLoadingMessage("Menghapus...");
+      setLoading(true);
       const response = await deleteCouple(slug);
-      alert('Undangan berhasil dihapus');
+
       // Refresh list
       const data = await allCouple();
       if (data.items) setDataCouple(data.items);
+
+      setLoading(false);
+      setSuccessMessage("Berhasil Dihapus!");
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (error) {
       console.error("Error:", error);
+      setLoading(false);
+      alert("Gagal menghapus data");
     }
   }
 
@@ -237,14 +252,14 @@ const Admin = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
             <div className="bg-white px-6 py-3 rounded-2xl shadow-lg flex items-center gap-3">
               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#475a80]"></div>
-              <span className="text-[#475a80] font-medium">Menyimpan...</span>
+              <span className="text-[#475a80] font-medium">{loadingMessage}</span>
             </div>
           </div>
         }
 
         {success &&
           <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-2 rounded-full shadow-lg flex items-center gap-2 animate-bounce">
-            <span>Berhasil Disimpan!</span>
+            <span>{successMessage}</span>
           </div>
         }
 
