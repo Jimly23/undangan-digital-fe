@@ -139,10 +139,16 @@ const Home = () => {
                   <p>Rp 70.000 (Foto)</p>
                   <p>Rp 50.000 (Tanpa Foto)</p>
                   <div className="grid grid-cols-2 gap-2 text-[10px] mt-2">
-                    <Link to={item.foto}>
+                    <Link to={item.foto} onClick={(e) => {
+                      e.preventDefault();
+                      window.open(item.tanpaFoto, "_blank");
+                    }}>
                       <button className="w-full py-1 bg-orange-500 text-white rounded-full">Foto</button>
                     </Link>
-                    <Link to={item.tanpaFoto}>
+                    <Link to={item.tanpaFoto} onClick={(e) => {
+                      e.preventDefault();
+                      window.open(item.tanpaFoto, "_blank");
+                    }}>
                       <button className="w-full py-1 bg-orange-500 text-white rounded-full">Tanpa Foto</button>
                     </Link>
                   </div>
