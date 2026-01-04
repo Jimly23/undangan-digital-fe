@@ -141,7 +141,7 @@ const Home = () => {
                   <div className="grid grid-cols-2 gap-2 text-[10px] mt-2">
                     <Link to={item.foto} onClick={(e) => {
                       e.preventDefault();
-                      window.open(item.tanpaFoto, "_blank");
+                      window.open(item.foto, "_blank");
                     }}>
                       <button className="w-full py-1 bg-orange-500 text-white rounded-full">Foto</button>
                     </Link>
