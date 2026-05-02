@@ -133,6 +133,7 @@ const Admin = () => {
     tempat_akad: "",
     jam_akad: "",
     tanggal_resepsi: "",
+    tanggal_resepsi_opsional: "",
     tempat_resepsi: "",
     jam_resepsi: "",
     // google map
@@ -315,6 +316,7 @@ const Admin = () => {
                 isOpen={openSections.resepsi} onToggle={() => toggleSection('resepsi')}
               >
                 <Input label="Tanggal" name="tanggal_resepsi" type="date" onChange={handleChange} />
+                <Input label="Tanggal Opsional" name="tanggal_resepsi_opsional" type="text" onChange={handleChange} />
                 <Input label="Tempat" name="tempat_resepsi" type="text" onChange={handleChange} />
                 <Input label="Jam" name="jam_resepsi" type="time" onChange={handleChange} />
               </FormSection>

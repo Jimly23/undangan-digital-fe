@@ -113,6 +113,8 @@ const Layout = ({tamu, background, bingkai, dataCouple, fotoDefault, warnaPrimar
     setIsChrome(isUsingChrome);
   }, []);
 
+  // console.log(dataCouple)
+
   const openInChrome = () => {
     const url = window.location.href;
 
@@ -355,9 +357,13 @@ const Layout = ({tamu, background, bingkai, dataCouple, fotoDefault, warnaPrimar
                    {dataCouple?.tipe_acara === "Resepsi" ? "Resepsi" : "Tasyakuran"}
                   </h6>
                   <div>
-                    {dataCouple?.tanggal_resepsi && 
+                    {dataCouple?.tanggal_resepsi_opsional === null ? 
+                    <h6 className='text-lg'>{formatDate(dataCouple?.tanggal_resepsi)}</h6> : 
+                    <h6 className='text-lg'>{dataCouple?.tanggal_resepsi_opsional}</h6>}
+
+                    {/* {dataCouple?.tanggal_resepsi && 
                       <h6 className='text-lg'>{formatDate(dataCouple?.tanggal_resepsi)}</h6>
-                    }
+                    } */}
                     <h6 className="font-medium">{dataCouple?.jam_resepsi}</h6>
                     <SiGooglemaps size={24} className="mt-5 mb-2 mx-auto"/>
                     {/* <img src="{{ asset('storage/icon/map.png') }}" className="mt-5 mb-2 w-[25px] mx-auto" /> */}
