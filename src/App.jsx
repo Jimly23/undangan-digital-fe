@@ -16,6 +16,7 @@ import Mocha from "./templates/Mocha";
 import RusticBrown from "./templates/RusticBrown";
 import TamuUndangan from "./pages/TamuUndangan";
 import { HelmetProvider } from "react-helmet-async";
+import Garden from "./templates/Garden";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/404" element={<NotFound />} />
           <Route path="/rose/:slug/:tamu" element={<Rose />} />
           <Route path="/brezze/:slug/:tamu" element={<Brezze />} />
+          <Route path="/garden/:slug/:tamu" element={<Garden />} />
           <Route path="/mocha/:slug/:tamu" element={<Mocha />} />
           <Route path="/purple-haze/:slug/:tamu" element={<PurpleHaze />} />
           <Route path="/sky-petals/:slug/:tamu" element={<SkyPetals />} />
