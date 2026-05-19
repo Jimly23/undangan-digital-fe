@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        // 'angin' akan menjadi nama class Anda: font-angin
+        angin: ['Angin Senja', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

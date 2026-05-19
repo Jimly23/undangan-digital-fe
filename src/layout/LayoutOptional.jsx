@@ -9,6 +9,7 @@ import { GiLovers } from 'react-icons/gi';
 import { FaGift } from 'react-icons/fa6';
 import { IoMailOpenOutline, IoWarning } from 'react-icons/io5';
 import { TbMusic, TbMusicOff } from 'react-icons/tb';
+import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 import bca from '../assets/bank/bca.png';
 import bni from '../assets/bank/bni.png';
@@ -18,6 +19,12 @@ import dana from '../assets/bank/dana.png';
 import ovo from '../assets/bank/ovo.png';
 import { BiGlobe } from 'react-icons/bi';
 import { Helmet } from 'react-helmet-async';
+import galeri1 from '../assets/laras/galeri1.jpeg';
+import galeri2 from '../assets/laras/galeri2.jpeg';
+import galeri3 from '../assets/laras/galeri3.jpeg';
+import galeri4 from '../assets/laras/galeri4.jpeg';
+import galeri5 from '../assets/laras/galeri5.jpeg';
+import galeri6 from '../assets/laras/galeri6.jpeg';
 
 const logoBank = {
   bca: bca,
@@ -31,6 +38,8 @@ const logoBank = {
 function WeddingGiftSection({ dataCouple }) {
   // State untuk melacak nomor mana yang sedang disalin (untuk feedback visual)
   const [copiedId, setCopiedId] = useState(null);
+  // State untuk toggle tampilan gift cards
+  const [showGift, setShowGift] = useState(false);
 
   const giftData = [];
 
@@ -68,8 +77,8 @@ function WeddingGiftSection({ dataCouple }) {
 
       {/* --- HEADER --- */}
       <div className="text-center max-w-xl mx-auto mb-6">
-        <h2 className="text-xl font-serif tracking-widest mb-6 text-[#4a5c46]">
-          WEDDING GIFT
+        <h2 className="text-[50px] font-angin mb-6 text-[#4a5c46]">
+          Wedding Gift
         </h2>
         <p className="text-sm leading-relaxed font-light text-gray-600 px-2">
           Doa restu anda merupakan karunia yang sangat berarti bagi kami, dan jika memberi adalah ungkapan tanda kasih anda, anda dapat memberi kado secara cashless.
@@ -79,7 +88,7 @@ function WeddingGiftSection({ dataCouple }) {
       {/* --- BUTTON TRIGGER TOGGLE/GIFT --- */}
       <div className="text-center mb-10">
         <p className="italic text-xs text-gray-500 mb-2">Klik Wedding Gift</p>
-        <button className="flex items-center gap-2 bg-[#556b2f] text-white px-6 py-2.5 rounded-md shadow-md text-sm font-medium hover:bg-[#435425] transition-colors">
+        <button onClick={() => setShowGift(!showGift)} className="flex items-center gap-2 bg-[#556b2f] text-white px-6 py-2.5 rounded-md shadow-md text-sm font-medium hover:bg-[#435425] transition-colors">
           {/* Icon Kotak Kado */}
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 012 2v2a2 2 0 01-2 2h-1v5a2 2 0 01-2 2H7a2 2 0 01-2-2v-5H4a2 2 0 01-2-2V8a2 2 0 012-2h1.17A3 3 0 015 5zM9 4a1 1 0 10-2 0v2h2V4zm2 2h2V4a1 1 0 10-2 0v2zm-7 4v2h12V10H4zm2 2v5a1 1 0 001 1h6a1 1 0 001-1v-5H6z" clipRule="evenodd" />
@@ -89,7 +98,7 @@ function WeddingGiftSection({ dataCouple }) {
       </div>
 
       {/* --- LIST CARDS --- */}
-      <div className="w-full max-w-md flex flex-col gap-5">
+      {showGift && <div className="w-full max-w-md flex flex-col gap-5">
         {giftData.map((gift) => (
           <div
             key={gift.id}
@@ -143,7 +152,7 @@ function WeddingGiftSection({ dataCouple }) {
             )}
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   );
 }
@@ -175,12 +184,12 @@ function ClosingSection({ dataCouple, fotoDefault, warnaPrimary }) {
 
         {/* Konten Teks di Atas Foto */}
         <div className="relative z-20 text-center text-white max-w-md mx-auto">
-          <p className="text-sm font-serif tracking-[0.2em] uppercase mb-1 text-white/90">
+          <p className="text-sm font-serif tracking-[0.2em] mb-1 text-white/90">
             TERIMAKASIH
           </p>
 
           {/* Gunakan font cursive pilihan Anda, di sini pakai font-serif italic sebagai fallback */}
-          <h2 className="text-xl font-serif italic my-3 tracking-wide drop-shadow-sm">
+          <h2 className="text-[50px] font-angin italic my-3 tracking-wide drop-shadow-sm">
             Kami Yang Berbahagia
           </h2>
 
@@ -285,6 +294,120 @@ const CountdownTimer = ({ targetDate, warnaPrimary }) => {
     </div>
   );
 };
+
+function GallerySection() {
+  // Ganti url gambar di bawah dengan aset asli Anda
+  const images = [
+    galeri4, // Gambar Utama / Slide 1
+    galeri5, // Slide 2
+    galeri6, // Slide 3
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === images.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  return (
+    <section className="bg-[#EAECE6] min-h-screen py-12 px-6 font-sans text-[#4A5D4E]">
+      <div className="max-w-md mx-auto flex flex-col items-center">
+        
+        {/* Header Title */}
+        <div className="text-center mb-6">
+          <h2 className="font-angin text-[80px] text-[#5F7464] italic tracking-wide">
+            Galeri
+          </h2>
+          <p className="text-sm font-medium tracking-wider -mt-5 text-[#6B7F70]">
+            Ahmad & Laras
+          </p>
+        </div>
+
+        {/* Frame Utama Galeri */}
+        <div className="border-[6px] border-[#7A9080] p-3 w-full bg-transparent rounded-sm">
+          
+          {/* Slider Gambar Utama */}
+          <div className="relative w-full aspect-[2/3] overflow-hidden bg-gray-200 shadow-inner group">
+            <img
+              src={images[currentIndex]}
+              alt={`Foto Pernikahan ${currentIndex + 1}`}
+              className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+            />
+            
+            {/* Tombol Navigasi Kiri */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 -translate-y-1/2 text-white/80 hover:text-white bg-black/10 hover:bg-black/20 p-1 rounded-full transition"
+            >
+              <ChevronLeft size={28} strokeWidth={1.5} />
+            </button>
+
+            {/* Tombol Navigasi Kanan */}
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-white/80 hover:text-white bg-black/10 hover:bg-black/20 p-1 rounded-full transition"
+            >
+              <ChevronRight size={28} strokeWidth={1.5} />
+            </button>
+          </div>
+
+          {/* Grid Thumbnails (3 Kolom di Bawah) */}
+          <div className="grid grid-cols-3 gap-2 mt-3">
+            {images.map((img, index) => (
+              <div
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`aspect-square overflow-hidden cursor-pointer transition border-2 ${
+                  currentIndex === index ? 'border-[#4A5D4E] scale-95' : 'border-transparent opacity-70 hover:opacity-100'
+                }`}
+              >
+                <img
+                  src={img}
+                  alt={`Thumbnail ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Footer Section: Quote & Music Control */}
+        <div className="relative w-full mt-6 px-2 flex items-center justify-between">
+          {/* Quote Text */}
+          <div className="text-center flex-1 pr-8">
+            <p className="italic text-base md:text-lg text-[#5F7464] font-serif leading-relaxed">
+              “Loved you yesterday, love you still, always have, always will.”
+            </p>
+          </div>
+
+          {/* Music Toggle Button */}
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="absolute right-0 bottom-1 flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#5F7464] shadow-sm hover:shadow transition-all active:scale-95"
+            aria-label="Toggle Music"
+          >
+            {isPlaying ? (
+              <Pause size={16} fill="currentColor" className="text-[#5F7464]" />
+            ) : (
+              <Play size={16} fill="currentColor" className="ml-0.5 text-[#5F7464]" />
+            )}
+          </button>
+        </div>
+
+      </div>
+    </section>
+  );
+}
 
 
 
@@ -475,10 +598,10 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
           />
           {/* <div className='w-full h-[60%] bg-gradient-to-t from-[#cfdac9] via-[#cfdac9]/70 to-transparent absolute bottom-0 z-10'></div> */}
           <div className="absolute z-20 w-full bottom-24 flex items-center justify-center flex-col text-white px-4">
-            <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className="mb-3 text-sm tracking-widest uppercase font-light">
+            <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className="mb-3 text-sm">
               The Wedding Of
             </h6>
-            <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="text-4xl font-serif italic mb-10 mt-2 text-center">
+            <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="text-[100px] font-angin italic mb-10 mt-2 text-center">
               {dataCouple?.nama_panggilan_pria} & {dataCouple?.nama_panggilan_wanita}
             </h4>
             <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" className="rubik-font text-center text-sm font-light tracking-wide">
@@ -494,7 +617,7 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
           <img src={dataCouple?.foto_mempelai_background ? dataCouple?.foto_mempelai_background : fotoDefault[0]} className='absolute top-0 w-full h-full object-cover left-0' />
           <div className={`text-center absolute bottom-[160px] left-0 z-10 w-full flex justify-center flex-col`}>
             <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">The Wedding Of</h6>
-            <h4 className="text-2xl font-medium flex justify-center gap-x-3 flex-col my-5 px-2">
+            <h4 className="text-[80px] font-angin font-medium flex justify-center gap-x-3 flex-col my-5 px-2">
               <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className='leading-[45px]'>{dataCouple?.nama_panggilan_pria} & {dataCouple?.nama_panggilan_wanita}</span>
             </h4>
             {dataCouple?.tanggal_akad &&
@@ -507,19 +630,19 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
         <div className={`text-center py-10 px-5 bg-[#e8eae5] text-[#7e9475]`}>
           <p className='text-3xl '>A | L</p>
           <div className='w-full h-[280px] my-5 border-2 border-[#7e9475]'>
-            <img src={dataCouple?.foto_mempelai_background ? dataCouple?.foto_mempelai_background : fotoDefault[0]} alt="" className='w-full h-full object-cover' />
+            <img src={galeri1} alt="" className='w-full h-full object-cover' />
           </div>
           <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" className="text-[14px] rubik-font text-justify my-3">Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</p>
           <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="text-[14px] rubik-font">( Q.S. Ar-Rum:21 )</p>
           <div className='flex items-center gap-x-2 my-10'>
             <div className='w-full h-[100px] border-2 border-white'>
-              <img src={dataCouple?.foto_mempelai_pria ? dataCouple?.foto_mempelai_pria : fotoDefault[1]} alt="" className='w-full h-full object-cover' />
+              <img src={galeri1} alt="" className='w-full h-full object-cover' />
             </div>
             <div className='w-full h-[100px] border-2 border-white'>
-              <img src={dataCouple?.foto_mempelai_wanita ? dataCouple?.foto_mempelai_wanita : fotoDefault[2]} alt="" className='w-full h-full object-cover' />
+              <img src={galeri2} alt="" className='w-full h-full object-cover' />
             </div>
             <div className='w-full h-[100px] border-2 border-white'>
-              <img src={dataCouple?.foto_mempelai_wanita ? dataCouple?.foto_mempelai : fotoDefault[2]} alt="" className='w-full h-full object-cover' />
+              <img src={galeri3} alt="" className='w-full h-full object-cover' />
             </div>
           </div>
         </div>
@@ -534,10 +657,10 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
               <div className='relative w-[250px] h-[320px] bg-[#7c9474]'>
                 <div className='absolute w-[250px] h-[320px] bg-[#7c9474] -left-3 -top-3'>
                   <img src={dataCouple?.foto_mempelai_wanita ? dataCouple?.foto_mempelai_wanita : fotoDefault[2]} className='w-full h-full object-cover' />
-                  <p className='text-white text-5xl absolute z-99 left-10 bottom-0'>{dataCouple?.nama_panggilan_wanita}</p>
+                  <p className='text-white font-angin text-[100px] absolute z-99 left-16 -bottom-10'>{dataCouple?.nama_panggilan_wanita}</p>
                 </div>
               </div>
-              <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" className="text-2xl ms-6 text-white mt-5 font-medium flex flex-col leading-[55px] text-left">{dataCouple?.nama_lengkap_wanita}</h4>
+              <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" className="text-[50px] font-angin ms-6 text-white mt-5 font-medium flex flex-col leading-[55px] text-left">{dataCouple?.nama_lengkap_wanita}</h4>
               <div className="rubik-font text-left ms-6">
                 <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">Putri dari Bapak {dataCouple?.nama_ayah_mempelai_wanita} & Ibu {dataCouple?.nama_ibu_mempelai_wanita}</p>
                 <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" className='mt-4'>Alamat:</p>
@@ -549,10 +672,10 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
               <div className='relative w-[250px] h-[320px] bg-[#7c9474] self-end'>
                 <div className='absolute w-[250px] h-[320px] bg-[#7c9474] -left-3 -top-3'>
                   <img src={dataCouple?.foto_mempelai_pria ? dataCouple?.foto_mempelai_pria : fotoDefault[1]} className="w-full h-full object-cover" alt="" />
-                  <p className='text-white text-5xl absolute z-99 left-10 bottom-0'>{dataCouple?.nama_panggilan_pria}</p>
+                  <p className='text-white font-angin text-[100px] absolute z-99 left-10 -bottom-10'>{dataCouple?.nama_panggilan_pria}</p>
                 </div>
               </div>
-              <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" className="text-2xl mr-6 text-right text-white mt-5 font-medium flex flex-col leading-[55px]">{dataCouple?.nama_lengkap_pria}</h4>
+              <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" className="text-[60px] font-angin mr-6 text-right text-white mt-5 font-medium flex flex-col leading-[55px]">{dataCouple?.nama_lengkap_pria}</h4>
               <div className="rubik-font text-right mr-6">
                 <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">Putra dari Bapak {dataCouple?.nama_ayah_mempelai_pria} & Ibu {dataCouple?.nama_ibu_mempelai_pria}</p>
                 <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" className='mt-4'>Alamat:</p>
@@ -678,16 +801,19 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
             </div>
           </div>
         </div>
+
+        <GallerySection />
+
         <div className="bg-[#cbd2c9] min-h-screen px-6 py-12 flex flex-col items-center select-none text-[#5c6e58]">
           {/* --- HEADER SECTION --- */}
           <div className="text-center max-w-md mx-auto mb-10">
             {/* Judul Utama (Gunakan font cursive pilihan Anda, di sini pakai font-serif/playfair sebagai fallback) */}
-            <h1 className="text-3xl font-serif italic mb-4 text-[#4a5c46]">
+            <h1 className="font-angin text-[80px] italic text-[#4a5c46]">
               Love story
             </h1>
 
             {/* Quote */}
-            <p className="text-sm leading-relaxed font-light mb-3 text-[#4a5c46]/90 px-2">
+            <p className="text-sm leading-relaxed font-serif mb-3 text-[#4a5c46]/90 px-2">
               " Tidak ada yang kebetulan yang terjadi di dunia ini, sepertinya semua pertemuan dan kejadian sudah direncanakan sejak awal, "
             </p>
 
@@ -709,12 +835,12 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
                 </h2>
 
                 {/* Tahun Kejadian */}
-                <h3 className="text-sm font-semibold text-[#5c6e58] mb-4">
+                <h3 className="text-sm font-serif text-[#5c6e58] mb-4">
                   {story.tahun}
                 </h3>
 
                 {/* Isi Cerita */}
-                <p className="text-sm leading-relaxed text-[#5c6e58]/90 font-light tracking-wide text-justify">
+                <p className="text-sm leading-relaxed text-[#5c6e58]/90 font-serif tracking-wide text-justify">
                   {story.cerita}
                 </p>
               </div>

@@ -13,6 +13,15 @@ body {
 .rubik-font {
   font-family: "Rubik", serif;
 }
+@layer base {
+  @font-face {
+    font-family: 'Angin Senja';
+    /* Karena file ada di folder public, jalurnya langsung dimulai dari '/' */
+    src: url('/fonts/Angin-Senja.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
 
 .glassmorphism {
   background: rgba(255, 255, 255, 0.2); /* Latar belakang transparan */
