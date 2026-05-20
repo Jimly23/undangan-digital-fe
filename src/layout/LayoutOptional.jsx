@@ -25,6 +25,7 @@ import galeri3 from '../assets/laras/galeri3.jpeg';
 import galeri4 from '../assets/laras/galeri4.jpeg';
 import galeri5 from '../assets/laras/galeri5.jpeg';
 import galeri6 from '../assets/laras/galeri6.jpeg';
+import qr from '../assets/laras/qr.png';
 
 const logoBank = {
   bca: bca,
@@ -788,15 +789,16 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
         </div>
         <div id='maps' className="flex flex-col items-center justify-center relative py-[30px] rubik-font bg-[#708a65]">
           <div className="relative">
-            <h5 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className={`text-center text-2xl mb-10 text-white`}>Maps</h5>
+            <h5 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className={`text-center text-[70px] mb-10 text-white font-angin`}>Maps</h5>
             <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="w-[300px] h-[300px] mx-auto sm:w-[350px] sm:h-[350px] bg-[${warnaPrimary}] shadow-xl border rounded-2xl overflow-hidden">
-              <iframe src={dataCouple?.link_map}
+              {/* <iframe src={dataCouple?.link_map}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-full w-full"
               >
-              </iframe>
+              </iframe> */}
+              <img src={qr} alt="qr" className='h-full w-full' />
             </div>
           </div>
         </div>
