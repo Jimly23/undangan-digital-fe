@@ -449,7 +449,7 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
       id: 4,
       judul: "Pernikahan",
       tahun: "Tahun 2026",
-      cerita: "Kami tidak mencari kesempurnaan, tapi saling melengkapi kekurangan, setelah melewati ombak, badai dan angin yang begitu kencang, sampailah dititik ini. Kini kami adalah tuan dan puan dengan sisi ego dan kosong yang bertapak di atas permulaan menuju tujuan, Bersama, kami berlayar. Pada hari 07 Juni 2026 bukan hanya awal dari lembaran baru, tetapi juga peneguh cinta yang ingin kami jaga selamanya dalam ikatan pernikaham, dan inilah janji kami untuk hari ini dan selamanya."
+      cerita: "Kami tidak mencari kesempurnaan, tapi saling melengkapi kekurangan, setelah melewati ombak, badai dan angin yang begitu kencang, sampailah dititik ini. Kini kami adalah tuan dan puan dengan sisi ego dan kosong yang bertapak di atas permulaan menuju tujuan, Bersama, kami berlayar. Pada hari Minggu 07 Juni 2026 bukan hanya awal dari lembaran baru, tetapi juga peneguh cinta yang ingin kami jaga selamanya dalam ikatan pernikaham, dan inilah janji kami untuk hari ini dan selamanya."
     }
   ];
 
@@ -592,16 +592,15 @@ const LayoutOptional = ({ tamu, background, bingkai, dataCouple, fotoDefault, wa
 
         <div id='home' className="h-screen flex items-center justify-center relative overflow-hidden">
           <img
-            src={dataCouple?.foto_mempelai ? dataCouple?.foto_mempelai : fotoDefault[0]}
+            src={dataCouple?.foto_mempelai && dataCouple?.foto_mempelai}
             className='absolute top-0 left-0 w-full h-full object-cover z-0'
-            alt="Background Mempelai"
           />
           {/* <div className='w-full h-[60%] bg-gradient-to-t from-[#cfdac9] via-[#cfdac9]/70 to-transparent absolute bottom-0 z-10'></div> */}
-          <div className="absolute z-20 w-full bottom-24 flex items-center justify-center flex-col text-white px-4">
+          <div className="absolute z-20 w-full bottom-32 flex items-center justify-center flex-col text-white px-4">
             <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className="mb-3 text-sm">
               The Wedding Of
             </h6>
-            <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="text-[100px] font-angin italic mb-10 mt-2 text-center">
+            <h4 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="text-[50px] font-angin italic mb-5 mt-2 text-center">
               {dataCouple?.nama_panggilan_pria} & {dataCouple?.nama_panggilan_wanita}
             </h4>
             <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" className="rubik-font text-center text-sm font-light tracking-wide">
